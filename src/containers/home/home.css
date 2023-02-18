@@ -12,6 +12,21 @@
     background-color: bisque;
 }
 
+.homecitos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 37em;
+    width: 50%;
+
+    padding-right: 2em;
+
+
+    background-color: bisque;
+}
+
 .cartas {
     padding: 1em;
 }

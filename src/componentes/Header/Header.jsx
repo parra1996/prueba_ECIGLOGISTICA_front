@@ -58,7 +58,6 @@ const Header = (props) => {
                 </div>
                 <div className="headercitos">
                 <div color="teal" style={{pointer:'cursor'}} >{props.credentials?.usuario.name} {props.credentials?.usuario.lastName}</div>&nbsp;
-                <div color="teal" style={{pointer:'cursor'}} onClick={() => navegar("/")}>Products</div>&nbsp;
                 <div color="teal" style={{pointer:'cursor'}} onClick={() => logOut()}>LogOut</div>&nbsp;
                 </div>
                 <div className="headercitos"></div>
