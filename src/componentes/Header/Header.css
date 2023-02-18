@@ -1,0 +1,49 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 128, 0, 0.618);
+
+    height: 4.8em;
+    width: 100%;
+}
+
+.homeButton {
+    display: flex;
+    height: 2em;
+    width: 2em;
+
+  cursor: pointer;
+}
+
+.homeButton:hover {
+    display: flex;
+    height: 3em;
+    width: 3em;
+
+    transition: .3s;
+
+  cursor: pointer;
+}
+
+.headercitos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 33.33em;
+
+    color: whitesmoke;
+    font-size: large;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.link {
+    display: flex;
+    margin: .2em;
+}

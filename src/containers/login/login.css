@@ -1,0 +1,18 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 37em;
+    width: 100vw;
+
+    background-color: bisque;
+}
+
+.boton {
+    height: 2em;
+    width: 4em;
+
+    background-color: red;
+}
