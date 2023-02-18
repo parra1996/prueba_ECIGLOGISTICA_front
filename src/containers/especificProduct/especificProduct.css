@@ -1,17 +1,10 @@
-.home {
+.especificProduct {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 
-    height: 37em;
-    width: 100vw;
-
-    padding-right: 2em;
+    height: auto;
 
     background-color: bisque;
-}
-
-.cartas {
-    padding: 1em;
 }

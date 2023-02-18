@@ -34,7 +34,9 @@ const Header = (props) => {
     if (!props.credentials?.token) {
         return (
             <div className='header'>
-                <div className="headercitos">
+                <div className="headercitos"
+                onClick={() => navegar("/")}
+                >
                     ECIGLOGISTICA
                 </div>
                 <div className="headercitos">
@@ -48,7 +50,10 @@ const Header = (props) => {
     } else {
         return (
             <div className='header'>
-                <div className="headercitos">
+                <div className="headercitos"
+                onClick={() => navegar("/")}
+                
+                >
                     ECIGLOGITICA
                 </div>
                 <div className="headercitos">

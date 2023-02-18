@@ -36,7 +36,7 @@ const Login = (props) => {
                 props.dispatch({ type: LOGIN, payload: resultado.data });
                 setTimeout(() => {
                     navigate("/");
-                }, 3000);
+                }, 1000);
             }
 
         } catch (error) {
