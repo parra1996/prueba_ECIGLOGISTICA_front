@@ -145,6 +145,9 @@ const Admin = (props) => {
                         color="red"
                         onClick={() => createSubProduct()}
                     />
+                    <p>Para crear un derivado de un producto simplemente
+                    mira el id del producto deseado en la lista de tu derecha 
+                    y ponlo en el campo de id del producto.</p>
                     <br />
                     <p> {msgError} </p>
                 </div>
