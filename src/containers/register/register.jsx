@@ -68,7 +68,7 @@ const Register = () => {
             }, 3000);
 
         } catch (error) {
-            console.log(error);
+            setMsgError(error);
         }
     }
     
@@ -85,7 +85,7 @@ const Register = () => {
             <Input  style={{ padding: '.5em' }} name="lastName" placeholder="lastName" onChange={(e) => { rellenarDatos(e) }}/>
             <Input  style={{ padding: '.5em' }} name="email" placeholder="email" onChange={(e) => { rellenarDatos(e) }}/>
             <Input  style={{ padding: '.5em' }} name="password" placeholder="password" onChange={(e) => { rellenarDatos(e) }}/>
-            <Input  style={{ padding: '.5em' }} name="password2" placeholder="password2" onChange={(e) => { rellenarDatos(e) }}/>
+            <Input  style={{ padding: '.5em' }} name="password2" placeholder="repeat your password" onChange={(e) => { rellenarDatos(e) }}/>
             <Button 
             color="red"
             children="Registrate"

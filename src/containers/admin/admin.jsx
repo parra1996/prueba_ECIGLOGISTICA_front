@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import './admin.css'
 import { Button, Input, List } from '@mantine/core'
 import { showNotification } from '@mantine/notifications';
-import Accordion from 'react-bootstrap/Accordion';
+import { connect } from 'react-redux';
 
 
 
 
-const Admin = () => {
+const Admin = (props) => {
 
     const navigate = useNavigate();
 
@@ -18,7 +18,6 @@ const Admin = () => {
         observations: ""
     });
     const [products, setProducts] = useState([])
-    const [actualProducts,setActualProducts] = useState([])
 
     const [newSubProduct, setNewSubProduct] = useState({
         name: "",
@@ -31,10 +30,6 @@ const Admin = () => {
     useEffect(() => {
         bringProducts()
     }, [])
-
-    useEffect(() => {
-
-    }, [actualProducts])
 
     const rellenarDatos = (e) => {
         setNewProduct({
@@ -49,7 +44,7 @@ const Admin = () => {
         })
     };
 
-    const createProduct = () => {
+    const createProduct = async () => {
 
         try {
 
@@ -58,8 +53,7 @@ const Admin = () => {
                 observations: newProduct.observations
             }
 
-            const results = axios.post('http://localhost:5000/products/crear', body)
-            setActualProducts(true)
+            const results = await axios.post('http://localhost:5000/products/crear', body)
 
             if (results) {
                 showNotification({
@@ -68,11 +62,13 @@ const Admin = () => {
                     message: 'Producto creado con exito',
                     autoClose: 5000,
                 })
+                await bringProducts()
+
             } else {
                 setMsgError("no se creo nada")
             }
         } catch (error) {
-            console.log(error)
+            setMsgError(error)
         }
     }
 
@@ -80,6 +76,9 @@ const Admin = () => {
 
         try {
 
+            let config = {
+                headers: { Authorization: `Bearer ${props.credentials.token}` }
+            };
             const body = {
                 name: newSubProduct.name,
                 observations: newSubProduct.observations,
@@ -87,7 +86,7 @@ const Admin = () => {
 
             const productId = newSubProduct.productId
 
-            const results = axios.post(`http://localhost:5000/productsAquired/aquire/${productId}`, body)
+            const results = axios.post(`http://localhost:5000/productsAquired/aquire/${productId}`, body,config)
 
             if (results) {
                 showNotification({
@@ -146,17 +145,16 @@ const Admin = () => {
                         color="red"
                         onClick={() => createSubProduct()}
                     />
-
                     <br />
                     <p> {msgError} </p>
                 </div>
             </div>
-            <div className='derechoadmin'>
-
+            <div className='derechoadmin hiden '>
+                    <h1>Lista de productos</h1>
                 {
                     products.map(productos => {
                         return (
-                            <div className='listaProductos'>
+                            <div className='listaProductos' key={productos.id} >
                                 <List>
                                     <List.Item>Nombre del producto: {productos.name}</List.Item>
                                     <List.Item>Id del producto:{productos.id}</List.Item>
@@ -171,4 +169,6 @@ const Admin = () => {
         </div>
     )
 }
-export default Admin;
+export default connect((state) => ({
+    credentials: state.credentials
+}))(Admin);

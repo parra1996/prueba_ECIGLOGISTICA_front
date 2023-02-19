@@ -4,7 +4,10 @@
     justify-content: center;
     align-items: center;
 
-    background-color: rgb(255, 196, 228);
+    margin: 0;
+    padding: 0;
+
+    background-color: bisque
 }
 
 .izquierdo {
@@ -13,12 +16,12 @@
     justify-content: center;
     align-items: center;
 
-    height: auto;
+    height: 42em;
     width: 53em;
 
     border-right: solid;
 
-    background-color: pink;
+
 }
 .titulo {
     display: flex;
@@ -29,7 +32,6 @@
     height: 4em;
     width: 53em;
 
-    background-color: green;
 }
 
 .productos {
@@ -38,10 +40,15 @@
     justify-content: center;
     align-items: center;
 
-    height: 33em;
+    height: auto;
     width: 53em;
 
-    background-color: yellow;
+    overflow-y:scroll;
+
+}
+
+.jugando::-webkit-scrollbar {
+    display: none;
 }
 
 .derecho {
@@ -53,7 +60,6 @@
     height: 42em;
     width: 53em;
 
-    background-color: blue;
 }
 
 .tituloSub {
@@ -65,7 +71,6 @@
     height: 4em;
     width: 53em;
 
-    background-color: lightblue;
 }
 
 .subproductos {
@@ -74,10 +79,12 @@
     justify-content: center;
     align-items: center;
 
-    height: 33em;
+    height: auto;
     width: 53em;
 
-    background-color: orange;
+    overflow-y:scroll;
+
+
 }
 
 .cartas {

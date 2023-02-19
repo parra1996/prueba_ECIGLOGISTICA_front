@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { LOGOUT } from '../../redux/types';
 import { connect } from 'react-redux';
 
-// import { Button } from '@mantine/core';
 
 
 import './Header.css';
+import { Button } from '@mantine/core';
 
 const Header = (props) => {
 
@@ -27,8 +27,8 @@ const Header = (props) => {
         props.dispatch({ type: LOGOUT });
 
         setTimeout(() => {
-            navigate("/");
-        }, 1500);
+            navigate("/login");
+        }, 1000);
     }
 
     if (!props.credentials?.token) {
@@ -40,8 +40,8 @@ const Header = (props) => {
                     ECIGLOGISTICA
                 </div>
                 <div className="headercitos">
-                <div color='teal' style={{pointer:'cursor'}} onClick={() => navegar("/login")}>Login</div>&nbsp;
-                <div color='teal' style={{pointer:'cursor'}} onClick={() => navegar("/register")}>Register</div> 
+                <Button color='dark' style={{pointer:'cursor'}} onClick={() => navegar("/login")}>Login</Button>&nbsp;
+                <Button color='dark' style={{pointer:'cursor'}} onClick={() => navegar("/register")}>Register</Button> 
                 </div>
                 <div className="headercitos">
                 </div>
@@ -56,10 +56,10 @@ const Header = (props) => {
                     ECIGLOGISTICA
                 </div>
                 <div className="headercitos">
-                <div color="teal" style={{pointer:'cursor'}} >{props.credentials?.usuario.name} {props.credentials?.usuario.lastName}</div>&nbsp;
-                <div color="teal" style={{pointer:'cursor'}} onClick={() => logOut()}>LogOut</div>&nbsp;
+                <Button color="dark" >{props.credentials?.usuario.name} {props.credentials?.usuario.lastName}</Button>&nbsp;
+                <Button color="dark" style={{pointer:'cursor'}} onClick={() => logOut()}>LogOut</Button>&nbsp;
                 {
-                    props.credentials.usuario.rol == 1 && <div style={{pointer:'cursor'}} onClick={()=> navegar('/admin')}>Admin</div>
+                    props.credentials.usuario.rol == 1 && <Button color="dark" style={{pointer:'cursor'}} onClick={()=> navegar('/admin')}>Admin</Button>
                 }
                 </div>
                 <div className="headercitos"></div>
