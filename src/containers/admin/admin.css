@@ -1,0 +1,59 @@
+.admin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 42em;
+    width: 100vw;
+
+
+    background-color: bisque;
+}
+
+.izquierdoadmin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 42em;
+    width: 50%;
+
+}
+
+.superioradmin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 33em;
+    width: 100%;
+
+
+}
+
+.inferioradmin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 33em;
+    width: 100%;
+
+
+}
+
+.derechoadmin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: auto;
+    width: 50%;
+
+}
+

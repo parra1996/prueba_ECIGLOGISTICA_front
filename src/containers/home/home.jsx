@@ -11,16 +11,15 @@ import {
 } from '@mantine/core';
 import Accordion from 'react-bootstrap/Accordion'
 
-
-
 const Home = (props) => {
 
     const navigate = useNavigate();
 
     const [products, setProducts] = useState([])
+    const [msgError, setMsgError] = useState(null)
     const [productsData, setProductsData] = useState({
-        name : "",
-        observations : ""
+        name: "",
+        observations: ""
     })
     const [subproducts, setSubProducts] = useState([])
     const [condition, setcondition] = useState(false)
@@ -31,12 +30,11 @@ const Home = (props) => {
         }
 
         bringProducts();
-
     }, []);
 
-    useEffect(()=>{
-        
-    },[productsData])
+    useEffect(() => {
+
+    }, [productsData])
 
     const rellenarDatos = (e) => {
         setProductsData({ ...productsData, [e.target.name]: e.target.value })
@@ -50,10 +48,10 @@ const Home = (props) => {
             if (result) {
                 setProducts(result.data)
             } else {
-                console.log("hubo un error al traer los productos")
+                setMsgError("hubo un error al traer los productos")
             }
         } catch (error) {
-            console.log(error)
+            setMsgError(error)
         }
     }
 
@@ -68,14 +66,14 @@ const Home = (props) => {
                 setcondition(true)
                 setSubProducts(result.data)
             } else {
-                console.log("hubo un error al traer los subproductos")
+                setMsgError("hubo un error al traer los subproductos")
             }
         } catch (error) {
-            console.log(error)
+            setMsgError(error)
         }
     }
 
-    
+
     const deleteProduct = async (id) => {
 
         try {
@@ -85,7 +83,7 @@ const Home = (props) => {
 
             let res = axios.delete(`http://localhost:5000/products/delete/${id}`, config)
             if (res) {
-            console.log("producto eliminado con exito")
+                console.log("producto eliminado con exito")
 
                 setTimeout(() => {
                     window.location.reload();
@@ -93,7 +91,7 @@ const Home = (props) => {
                 }, 2000);
             }
         } catch (error) {
-            console.log("error");
+            setMsgError("error al eliminar el producto");
         }
 
 
@@ -103,20 +101,20 @@ const Home = (props) => {
         try {
 
             const body = {
-                name : productsData.name,
-                observations : productsData.observations
+                name: productsData.name,
+                observations: productsData.observations
             }
 
             let resultado = await axios.put(`http://localhost:5000/products/update/${id}`, body);
 
-            if(resultado){
+            if (resultado) {
                 console.log("se ha cambiado con exito")
-            }else {
-                console.log("no se ha cambiado")
+            } else {
+                setMsgError("no se se pudo cambiar")
             }
 
-        }catch(error){
-            console.log(error)
+        } catch (error) {
+            setMsgError(error)
         }
     }
 
@@ -128,7 +126,7 @@ const Home = (props) => {
 
             let res = axios.delete(`http://localhost:5000/productsAquired/${id}`, config)
             if (res) {
-            console.log("subproducto eliminado con exito")
+                console.log("subproducto eliminado con exito")
 
                 setTimeout(() => {
                     window.location.reload();
@@ -136,7 +134,7 @@ const Home = (props) => {
                 }, 2000);
             }
         } catch (error) {
-            console.log("error");
+            setMsgError("error");
         }
 
     }
@@ -145,71 +143,86 @@ const Home = (props) => {
         try {
 
             const body = {
-                name : productsData.name,
-                observations : productsData.observations
+                name: productsData.name,
+                observations: productsData.observations
             }
 
             let resultado = await axios.put(`http://localhost:5000/productsAquired/${id}`, body);
 
-            if(resultado){
+            if (resultado) {
                 console.log("se ha cambiado con exito")
-            }else {
-                console.log("no se ha cambiado")
+            } else {
+                setMsgError("no se ha cambiado")
             }
 
-        }catch(error){
-            console.log(error)
+        } catch (error) {
+            setMsgError(error)
         }
     }
 
     return (
-        <div className='home'> 
-        <div className='homecitos'>
-        {
-                products.map(datica => {
-                    return (
-                        <div className="cartas" key={datica.id}>
-                            <Card style={{ width: '18rem' }}>
-                                <Group position="apart" mt="md" mb="xs">
-                                    <Text weight={500}>{datica.name}</Text>
-                                </Group>
-                                <Text size="sm" color="dimmed">
-                                    {datica.observations}
-                                </Text>
-                                <Button variant="success" onClick={() => bringSubProducts(datica.id)}>more like this</Button>
-                                <Button color="red" onClick={() => deleteProduct(datica.id)}>delete this product</Button>
-                                <Button color="green" onClick={() => updateProduct(datica.id)}>update this product</Button>
-                                <input type="text" name="name" id="name" placeholder="name" onChange={(e) => { rellenarDatos(e) }} /> <br />
-                                <input type="text" name="observations" id="observations" placeholder="observations" onChange={(e) => { rellenarDatos(e) }} /> <br />
-                            </Card><br />
-                        </div>
-                    )
-                })
-        }
-        </div> 
-        <div className='homecitos'>
-            
-        </div> 
-        {
-                subproducts.map(datica => {
-                    return (
-                        <div className="cartas" key={datica.id}>
-                            <Card style={{ width: '18rem' }}>
-                                <Group position="apart" mt="md" mb="xs">
-                                    <Text weight={500}>{datica.name}</Text>
-                                </Group>
-                                <Text size="sm" color="dimmed">
-                                    {datica.observations}
-                                </Text>
-                                <Button color="red" onClick={() => deleteSubProduct(datica.id)}>delete this product</Button>
-                                <Button color="green" onClick={() => updateSubProduct(datica.id)}>update this product</Button>
-                                <input type="text" name="name" id="name" placeholder="name" onChange={(e) => { rellenarDatos(e) }} /> <br />
-                                <input type="text" name="observations" id="observations" placeholder="observations" onChange={(e) => { rellenarDatos(e) }} /> <br />
-                            </Card><br />
-                        </div>
-                    )
-                })
-        }
+        <div className='home'>
+            <div className='izquierdo'>
+                <div className='titulo'>
+                    Lista de productos
+                </div>
+                <div className='productos'>
+                    {
+                        products.map(datica => {
+                            return (
+                                <div className="cartas" key={datica.id}>
+                                    <Card style={{ width: '18rem' }}>
+                                        <Group position="apart" mt="md" mb="xs">
+                                            <Text weight={500}>{datica.name}</Text>
+                                        </Group>
+                                        <Text size="sm" color="dimmed">
+                                            {datica.observations}
+                                        </Text>
+                                        <Button variant="success" onClick={() => bringSubProducts(datica.id)}>more like this</Button>
+                                        <Button color="red" onClick={() => deleteProduct(datica.id)}>delete this product</Button>
+                                        <Button color="green" onClick={() => updateProduct(datica.id)}>update this product</Button>
+                                        <input type="text" name="name" id="name" placeholder="name" onChange={(e) => { rellenarDatos(e) }} /> <br />
+                                        <input type="text" name="observations" id="observations" placeholder="observations" onChange={(e) => { rellenarDatos(e) }} /> <br />
+                                    </Card><br />
+                                    <div>
+                                        {msgError}
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+            <div className='derecho'>
+                <div className='tituloSub'>
+                    Lista de productos
+                </div>
+                <div className='subproductos'>
+                    {
+                        subproducts.map(datica => {
+                            return (
+                                <div className="cartas" key={datica.id}>
+                                    <Card style={{ width: '18rem' }}>
+                                        <Group position="apart" mt="md" mb="xs">
+                                            <Text weight={500}>{datica.name}</Text>
+                                        </Group>
+                                        <Text size="sm" color="dimmed">
+                                            {datica.observations}
+                                        </Text>
+                                        <Button color="red" onClick={() => deleteSubProduct(datica.id)}>delete this product</Button>
+                                        <Button color="green" onClick={() => updateSubProduct(datica.id)}>update this product</Button>
+                                        <input type="text" name="name" id="name" placeholder="name" onChange={(e) => { rellenarDatos(e) }} /> <br />
+                                        <input type="text" name="observations" id="observations" placeholder="observations" onChange={(e) => { rellenarDatos(e) }} /> <br />
+                                    </Card><br />
+                                    <div>
+                                        {msgError}
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            </div>
         </div>
     )
 }

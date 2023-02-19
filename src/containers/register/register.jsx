@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { checkError } from '../../tools';
 import './register.css';
+import {Button, Input} from '@mantine/core'
+import { showNotification } from '@mantine/notifications';
 
 const Register = () => {
 
@@ -53,7 +55,12 @@ const Register = () => {
                 setMsgError(resultado.data.error);
 
             } else {
-               console.log("te has registrado con exito")
+                showNotification({
+                    color: 'green',
+                    transition: 'fade',
+                    message: 'Te has registrado con exito',
+                    autoClose: 5000,
+                })
             }
 
             setTimeout(() => {
@@ -74,14 +81,16 @@ const Register = () => {
 
     return (
         <div className='register'>
-            <input  style={{ padding: '.5em' }} name="name" placeholder="name" onChange={(e) => { rellenarDatos(e) }}/>
-            <input  style={{ padding: '.5em' }} name="lastName" placeholder="lastName" onChange={(e) => { rellenarDatos(e) }}/>
-            <input  style={{ padding: '.5em' }} name="email" placeholder="email" onChange={(e) => { rellenarDatos(e) }}/>
-            <input  style={{ padding: '.5em' }} name="password" placeholder="password" onChange={(e) => { rellenarDatos(e) }}/>
-            <input  style={{ padding: '.5em' }} name="password2" placeholder="password2" onChange={(e) => { rellenarDatos(e) }}/>
-            <div className='boton' onClick={() => registrame()}>
-                registrame
-            </div> <br />
+            <Input  style={{ padding: '.5em' }} name="name" placeholder="name" onChange={(e) => { rellenarDatos(e) }}/>
+            <Input  style={{ padding: '.5em' }} name="lastName" placeholder="lastName" onChange={(e) => { rellenarDatos(e) }}/>
+            <Input  style={{ padding: '.5em' }} name="email" placeholder="email" onChange={(e) => { rellenarDatos(e) }}/>
+            <Input  style={{ padding: '.5em' }} name="password" placeholder="password" onChange={(e) => { rellenarDatos(e) }}/>
+            <Input  style={{ padding: '.5em' }} name="password2" placeholder="password2" onChange={(e) => { rellenarDatos(e) }}/>
+            <Button 
+            color="red"
+            children="Registrate"
+            onClick={() => registrame()}
+            />
             <p> {msgError} </p>
         </div>
     )

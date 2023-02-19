@@ -6,6 +6,7 @@ import Login from './containers/login/login';
 import Register from './containers/register/register'
 import Header from './componentes/Header/Header';
 import Footer from './componentes/Footer/Footer';
+import Admin from './containers/admin/admin';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/admin" element={<Admin/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

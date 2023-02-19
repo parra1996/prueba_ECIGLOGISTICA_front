@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { LOGIN } from '../../redux/types';
 import './login.css'
+import { showNotification} from '@mantine/notifications'
+import { Button, Input } from '@mantine/core';
 
 const Login = (props) => {
 
@@ -32,7 +34,12 @@ const Login = (props) => {
             if (resultado.data === "Usuario o contraseña inválido") {
                 setMsgError2("Usuario o contraseña inválido")
             } else {
-                console.log("te has logueado")
+                showNotification({
+                    color: 'green',
+                    transition: 'fade',
+                    message: 'Te has logueado con exito',
+                    autoClose: 5000,
+                })
                 props.dispatch({ type: LOGIN, payload: resultado.data });
                 setTimeout(() => {
                     navigate("/");
@@ -40,19 +47,21 @@ const Login = (props) => {
             }
 
         } catch (error) {
-            console.log(error)
+            setMsgError2(error)
         }
     };
 
 
     return (
         <div className='login'>
-            <input type="email" name="email" id="email" placeholder="email" onChange={(e) => { rellenarDatos(e) }} /> <br />
-            <input type="password" name="password" id="password" title="password" placeholder="password" autoComplete="off" onChange={(e) => { rellenarDatos(e); }} />
-            {msgError2}
-            <div className='boton' onClick={() => { login() }} >
-                Login
-            </div>
+            <Input type="email" name="email" id="email" placeholder="email" onChange={(e) => { rellenarDatos(e) }} /> <br />
+            <Input type="password" name="password" id="password" title="password" placeholder="password" autoComplete="off" onChange={(e) => { rellenarDatos(e); }} />
+            {msgError2}<br/>
+            <Button
+                children="Log In"
+                color="red"
+                onClick={() => login()}
+            />
         </div>
     )
 }

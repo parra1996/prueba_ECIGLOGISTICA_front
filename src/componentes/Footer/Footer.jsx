@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => {
     return (
         <div className='footer'>
-            <div className="footerLeft">{"</>"}&nbsp; &nbsp; &nbsp; 2022 © 。</div>
+            <div className="footerLeft">{"</>"}&nbsp; &nbsp; &nbsp; 2023 © 。</div>
             <div className="footerCenter">
 
                 Privacy Policy &nbsp; Terms of Use

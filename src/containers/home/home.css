@@ -4,27 +4,80 @@
     justify-content: center;
     align-items: center;
 
-    height: 37em;
-    width: 100vw;
-
-    padding-right: 2em;
-
-    background-color: bisque;
+    background-color: rgb(255, 196, 228);
 }
 
-.homecitos {
+.izquierdo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    height: 37em;
-    width: 50%;
+    height: auto;
+    width: 53em;
 
-    padding-right: 2em;
+    border-right: solid;
 
+    background-color: pink;
+}
+.titulo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    background-color: bisque;
+    height: 4em;
+    width: 53em;
+
+    background-color: green;
+}
+
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    height: 33em;
+    width: 53em;
+
+    background-color: yellow;
+}
+
+.derecho {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 42em;
+    width: 53em;
+
+    background-color: blue;
+}
+
+.tituloSub {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 4em;
+    width: 53em;
+
+    background-color: lightblue;
+}
+
+.subproductos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    height: 33em;
+    width: 53em;
+
+    background-color: orange;
 }
 
 .cartas {

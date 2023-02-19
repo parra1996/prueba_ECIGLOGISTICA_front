@@ -52,13 +52,15 @@ const Header = (props) => {
             <div className='header'>
                 <div className="headercitos"
                 onClick={() => navegar("/")}
-                
                 >
-                    ECIGLOGITICA
+                    ECIGLOGISTICA
                 </div>
                 <div className="headercitos">
                 <div color="teal" style={{pointer:'cursor'}} >{props.credentials?.usuario.name} {props.credentials?.usuario.lastName}</div>&nbsp;
                 <div color="teal" style={{pointer:'cursor'}} onClick={() => logOut()}>LogOut</div>&nbsp;
+                {
+                    props.credentials.usuario.rol == 1 && <div style={{pointer:'cursor'}} onClick={()=> navegar('/admin')}>Admin</div>
+                }
                 </div>
                 <div className="headercitos"></div>
             </div>
