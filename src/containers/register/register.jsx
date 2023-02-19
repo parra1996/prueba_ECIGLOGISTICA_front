@@ -48,7 +48,7 @@ const Register = () => {
         }
         try {
 
-            let resultado = await axios.post("http://localhost:5000/users/register", body);
+            let resultado = await axios.post("https://eciglogistica-jppl.herokuapp.com/users/register", body);
 
             if (resultado.data.error) {
 
