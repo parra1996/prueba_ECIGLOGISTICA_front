@@ -53,7 +53,7 @@ const Admin = (props) => {
                 observations: newProduct.observations
             }
 
-            const results = await axios.post('https://eciglogistica-jppl.herokuapp.com/products/crear', body)
+            const results = await axios.post('https://ecig-jppl.herokuapp.com/products/crear', body)
 
             if (results) {
                 showNotification({
@@ -86,7 +86,7 @@ const Admin = (props) => {
 
             const productId = newSubProduct.productId
 
-            const results = axios.post(`https://eciglogistica-jppl.herokuapp.com/productsAquired/aquire/${productId}`, body,config)
+            const results = axios.post(`https://ecig-jppl.herokuapp.com/productsAquired/aquire/${productId}`, body,config)
 
             if (results) {
                 showNotification({
@@ -111,7 +111,7 @@ const Admin = (props) => {
     const bringProducts = async () => {
         try {
 
-            const bring = await axios.get('https://eciglogistica-jppl.herokuapp.com/products')
+            const bring = await axios.get('https://ecig-jppl.herokuapp.com/products')
 
             if (bring) setProducts(bring.data)
             else setMsgError("no se pudo traer ningun producto")

@@ -44,7 +44,7 @@ const Home = (props) => {
     const bringProducts = async () => {
 
         try {
-            let result = await axios.get('https://eciglogistica-jppl.herokuapp.com/products')
+            let result = await axios.get('https://ecig-jppl.herokuapp.com/products')
 
             if (result) {
                 setProducts(result.data)
@@ -62,7 +62,7 @@ const Home = (props) => {
             headers: { Authorization: `Bearer ${props.credentials.token}` }
         };
         try {
-            let result = await axios.get(`https://eciglogistica-jppl.herokuapp.com/productsAquired/${id}`, config)
+            let result = await axios.get(`https://ecig-jppl.herokuapp.com/productsAquired/${id}`, config)
 
             if (result) {
                 setSubProducts(result.data)
@@ -81,7 +81,7 @@ const Home = (props) => {
                 headers: { Authorization: `Bearer ${props.credentials.token}` }
             };
 
-            let res = await axios.delete(`https://eciglogistica-jppl.herokuapp.com/products/delete/${id}`, config)
+            let res = await axios.delete(`https://ecig-jppl.herokuapp.com/products/delete/${id}`, config)
 
             if (res) {
                 showNotification({
@@ -107,7 +107,7 @@ const Home = (props) => {
                 observations: productsData.observations
             }
 
-            let resultado = await axios.put(`https://eciglogistica-jppl.herokuapp.com/products/update/${id}`, body);
+            let resultado = await axios.put(`https://ecig-jppl.herokuapp.com/products/update/${id}`, body);
 
             if (resultado) {
                 showNotification({
@@ -132,7 +132,7 @@ const Home = (props) => {
                 headers: { Authorization: `Bearer ${props.credentials.token}` }
             };
 
-            let res = await axios.delete(`https://eciglogistica-jppl.herokuapp.com/productsAquired/${id}`, config)
+            let res = await axios.delete(`https://ecig-jppl.herokuapp.com/productsAquired/${id}`, config)
 
             if (res) {
                 showNotification({
@@ -158,7 +158,7 @@ const Home = (props) => {
                 observations: productsData.observations
             }
 
-            let resultado =  axios.put(`https://eciglogistica-jppl.herokuapp.com/productsAquired/${id}`, body);
+            let resultado =  axios.put(`https://ecig-jppl.herokuapp.com/productsAquired/${id}`, body);
 
             if (resultado) {
                 showNotification({

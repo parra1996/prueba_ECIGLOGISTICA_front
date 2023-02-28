@@ -29,7 +29,7 @@ const Login = (props) => {
                 email: datosUsuario.email,
                 password: datosUsuario.password
             }
-            let resultado = await axios.post("https://eciglogistica-jppl.herokuapp.com/users/login", body);
+            let resultado = await axios.post("https://ecig-jppl.herokuapp.com/users/login", body);
 
             if (resultado.data === "Usuario o contraseña inválido") {
                 setMsgError2("Usuario o contraseña inválido")
